@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-faded m-b">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">SVG Shakyo</a>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row shakyo" id="app">
+        <div class="col-sm-6">
+          <code>{{ startTag }} </code>
+          <textarea class="form-control m-y js-textarea" v-model="source"></textarea>
+          <code>{{ endTag }}</code>
+        </div>
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-2">
+              <input type="file" name="file" @change="onChangeFile">
+            </div>
+            <div class="col-sm-10">
+              <div class="clearfix">
+                <div class="btn-group btn-group-sm pull-right" data-toggle="buttons">
+                  <label class="btn btn-secondary active" @click="onToggleView(true, true)">
+                    <input type="radio" name="options" checked> Shakyo
+                  </label>
+                  <label class="btn btn-secondary" @click="onToggleView(true, false)">
+                    <input type="radio" name="options"> SVG
+                  </label>
+                  <label class="btn btn-secondary" @click="onToggleView(false, true)">
+                    <input type="radio" name="options"> Image
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="preview-container">
+            <div v-html="preview()" v-show="showSvg" class="preview-item">
+            </div>
+            <div v-show="showImage" class="preview-item">
+              <img :src="image" @load="onLoadImage" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/autosize/dist/autosize.min.js"></script>
+    <script src="bower_components/vue/dist/vue.min.js"></script>
+    <script src="app.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+

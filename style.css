@@ -1,0 +1,22 @@
+img,
+svg {
+  border: 1px solid #e5e5e5;
+}
+
+.shakyo svg {
+  opacity: 0.7;
+}
+
+.shakyo img {
+  opacity: 0.2;
+}
+
+.preview-container {
+  position: fixed;
+}
+
+.preview-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
